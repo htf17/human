@@ -53,18 +53,23 @@ class Human(object):
         else:
             print(self.phraseList[len(self.phraseList) - numberOfSteps - 1])
 class Person(Human):
-    def __init__(self, height, weight, name, hairColor= 'none', eyeColor= 'none', gender='female', isPregnant=False):
+    def __init__(self, height, weight, name, hairColor= 'none', eyeColor= 'none', gender='female', pregnant=False):
         Human.gender = gender
-        Human.isPregnant = isPregnant
+        Human.pregnant = pregnant
         Human.__init__(self, height, weight, name, hairColor= 'none', eyeColor= 'none')
     def getGender(Human):
         return Human.gender
     def setGender(Huamn, gender):
         Human.gender = gender
     def getPregnant(Human):
-        return Human.isPregnant
-    def setPregnant(Huamn, isPregnant):
-        Human.isPregnant = isPregnant
+        return Human.pregnant
+    def setPregnant(Huamn, pregnant):
+        Human.pregnant = pregnant
+    def isPregnant(pregnant):
+        if pregnant != True:
+            raise ValueError('Must be True or False.')
+        else:
+            return pregnant
 class Student(Human):
         def __init__(self, height, weight, name, schoolAttended, subjectStudied, graduated, hairColor='none', eyeColor='none'):
             Human.schoolAttended = schoolAttended
