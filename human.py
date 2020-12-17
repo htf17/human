@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 __author__ = "Hunter Fagan"
-from datetime import date
+
+from datetime import datetime
 class Human(object):
     def __init__(self, height, weight, name, hairColor= 'none', eyeColor= 'none'):
         self.name = name
@@ -9,6 +10,8 @@ class Human(object):
         self.hairColor = hairColor
         self.eyeColor = eyeColor
         self.phraseList = []
+        self.dateOfBirth = datetime.date(datetime.now())
+        self.age = datetime.date(datetime.now()) - self.dateOfBirth
     def getName(self):
         return self.name
     def setName(self, name):
@@ -41,10 +44,6 @@ class Human(object):
         self.dateOfBirth = dateOfBirth
     def getAge(self):
         return self.age
-    def setAge(self, age):
-        today = date.today()
-        age = today.year - age.year - ((today.month, today.day) < (age.month, age.day))
-        return age
     def speak(self, phrase):
         self.phraseList.append(phrase)
         print(phrase)
@@ -54,18 +53,18 @@ class Human(object):
         else:
             print(self.phraseList[len(self.phraseList) - numberOfSteps - 1])
 class Person(Human):
-    def __init__(self, height, weight, name, hairColor= 'none', eyeColor= 'none', gender='female', pregnant=False):
+    def __init__(self, height, weight, name, hairColor= 'none', eyeColor= 'none', gender='female', isPregnant=False):
         Human.gender = gender
-        Human.pregnant = pregnant
+        Human.isPregnant = isPregnant
         Human.__init__(self, height, weight, name, hairColor= 'none', eyeColor= 'none')
     def getGender(Human):
         return Human.gender
     def setGender(Huamn, gender):
         Human.gender = gender
     def getPregnant(Human):
-        return Human.pregnant
-    def setPregnant(Huamn, pregnant):
-        Human.pregnant = pregnant
+        return Human.isPregnant
+    def setPregnant(Huamn, isPregnant):
+        Human.isPregnant = isPregnant
 class Student(Human):
         def __init__(self, height, weight, name, schoolAttended, subjectStudied, graduated, hairColor='none', eyeColor='none'):
             Human.schoolAttended = schoolAttended
